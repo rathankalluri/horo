@@ -17,8 +17,9 @@ if (isset($post_data["result"]["action"])) {
     $resp       = json_decode($response);
     $speak      = $resp->horoscope;
     $speak = substr($speak, 0, strpos($speak, "(c)"));
+    if($post_data["originalRequest"]["source"]){$src = $post_data["originalRequest"]["source"];}else{$src = "agent";}
     $parameters = array(
-        "source" => "agent",
+        "source" => $src,
         "speech" => $speak,
         "displayText" => $speak,
         "contextOut" => []
