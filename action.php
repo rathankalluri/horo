@@ -16,9 +16,10 @@ if (isset($post_data["result"]["action"])) {
     $response   = file_get_contents($url);
     $resp       = json_decode($response);
     $speak      = $resp->horoscope;
+    $speak = substr($speak, 0, strpos($speak, "(c)"));
     $parameters = array(
         "source" => "agent",
-        "speech" => "Here are the horoscope for today: " . $speak,
+        "speech" => $speak,
         "displayText" => $speak,
         "contextOut" => []
     );
