@@ -5,10 +5,10 @@ function sendMessage($parameters) {
  	echo json_encode($parameters);
 }
 
-$post_data = file_get_contents("php://input");
-if($post_data["result"]["parameters"]["sunsign"]){
+$post = file_get_contents("php://input");
+$post_data = json_decode($post,True);
+if (isset($post_data["result"]["action"])){
   $sunsign = $post_data["result"]["parameters"]["sunsign"];
-  $sunsign = 'cancer';
   $url = "http://sandipbgt.com/theastrologer/api/horoscope/".$sunsign."/today/";
   //$response = poster(url);
   $response = file_get_contents($url);
