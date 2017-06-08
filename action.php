@@ -5,23 +5,18 @@ function sendMessage($parameters)
     //      print_r($parameters);
     echo json_encode($parameters);
 }
-
 $post      = file_get_contents("php://input");
 $post_data = json_decode($post, True);
 #error_log($post, 0);
-
 if (isset($post_data["result"]["action"])) {
     $sunsign    = strtolower($post_data["result"]["parameters"]["sunsign"]);
-    $url        = "http://sandipbgt.com/theastrologer/api/horoscope/" . $sunsign . "/today/";
-    //$response = poster(url);
-    $response   = file_get_contents($url);
-    $resp       = json_decode($response);
-    $speak      = $resp->horoscope;
-    $speak = substr($speak, 0, strpos($speak, "(c)"));
+    $url        = "http://rathankalluri.com/tr-in/horoscope.php?zodiac=".$sunsign;
+    $speak      = file_get_contents($url);
+    //$speak      = substr($speak, 0, strpos($speak, "(c)"));
     if($post_data["originalRequest"]["source"]){$src = $post_data["originalRequest"]["source"];}else{$src = "agent";}
     $parameters = array(
         "source" => $src,
-        "speech" => $speak." Just say any other sunsign to know about it.",
+        "speech" => $speak." If you want to know more about another sign, please say it.",
         "displayText" => $speak,
         "contextOut" => []
     );
