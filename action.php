@@ -16,7 +16,7 @@ if (isset($post_data["result"]["action"])) {
     if($post_data["originalRequest"]["source"]){$src = $post_data["originalRequest"]["source"];}else{$src = "agent";}
     $parameters = array(
         "source" => $src,
-        "speech" => $speak." If you want to know more about another sign, please say it.",
+        "speech" => $speak,
         "displayText" => $speak,
         "contextOut" => []
     );
