@@ -7,7 +7,7 @@ function sendMessage($parameters)
 }
 $post      = file_get_contents("php://input");
 $post_data = json_decode($post, True);
-#error_log($post, 0);
+error_log($post, 0);
 if (isset($post_data["result"]["action"])) {
     $sunsign    = strtolower($post_data["result"]["parameters"]["sunsign"]);
     $url        = "http://rathankalluri.com/tr-in/horoscope.php?zodiac=".$sunsign;
