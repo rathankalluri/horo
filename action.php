@@ -13,7 +13,20 @@ if (isset($post_data["result"]["action"])) {
     $url        = "http://rathankalluri.com/tr-in/horoscope.php?zodiac=".$sunsign;
     $speak      = file_get_contents($url);
     //$speak      = substr($speak, 0, strpos($speak, "(c)"));
+    
+
     if($post_data["originalRequest"]["source"]){$src = $post_data["originalRequest"]["source"];}else{$src = "agent";}
+    if($src == "Google"){
+	    $parameters = array(
+        "source" => $src,
+        "speech" => "This is a demo text for google assistant", //$speak,
+        "displayText" => "Demo for google assistant", //$speak,
+        "contextOut" => []
+    );
+    sendMessage($parameters);
+
+    }//Google
+    else {
     $parameters = array(
         "source" => $src,
         "speech" => $speak,
@@ -21,8 +34,8 @@ if (isset($post_data["result"]["action"])) {
         "contextOut" => []
     );
     sendMessage($parameters);
-    
+    }//Facebook
 } else {
     echo "Please let me know your sunsign";
 }
-?>
+?> 
