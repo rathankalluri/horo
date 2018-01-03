@@ -12,9 +12,13 @@ if (isset($post_data["result"]["action"])) {
     $sunsign    = strtolower($post_data["result"]["parameters"]["sunsign"]);
     $url        = "http://rathankalluri.com/tr-in/horoscope.php?zodiac=".$sunsign;
     $speak      = file_get_contents($url);
+    $data = json_decode($speak, true);
     //$speak      = substr($speak, 0, strpos($speak, "(c)"));
     
-
+   foreach($data as $spe){
+	$speech = $spe["desc"];
+	$write = $spe["write"];
+}     
     if($post_data["originalRequest"]["source"]){$src = $post_data["originalRequest"]["source"];}else{$src = "agent";}
     if($src == "Google"){
 	    $parameters = array(
@@ -24,13 +28,12 @@ if (isset($post_data["result"]["action"])) {
         "contextOut" => []
     );
     sendMessage($parameters);
-
     }//Google
     else {
     $parameters = array(
         "source" => $src,
-        "speech" => $speak,
-        "displayText" => $speak,
+        "speech" => $speech,
+        "displayText" => $write,
         "contextOut" => []
     );
     sendMessage($parameters);
