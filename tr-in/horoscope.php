@@ -1,5 +1,5 @@
 <?php
-
+//Passes relavant sunsign info for today back to action.php
 if($_GET["zodiac"]){
 
 $horos = file_get_contents("horoapi.json");
@@ -16,8 +16,8 @@ foreach($json as $horo)
 }
 else{
 function getFeed($feed_url) {
-    
-//Recent add
+ // This function is automatically triggered every day to update the horoscope details from data feed, it does   
+//Cleaning of Data from data feed, creating a json file with details to be sent to action.php
 
     $content = file_get_contents($feed_url);
     $x = new SimpleXmlElement($content);
@@ -43,8 +43,7 @@ function getFeed($feed_url) {
         $desc = str_replace("<br/><br/><B>","Your ",$desc);
         $desc = str_replace(": </B>"," today is ",$desc);
         $desc = trim($desc);
-       
-//        $hor_stack[] = array('sunsign' => "$title",'desc' => "$desc", 'write' => "$write");
+
           $hor_stack[] = array($title => array('desc' => "$desc", 'write' => "$write"));	
     }
         $hor_json = json_encode($hor_stack);
