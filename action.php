@@ -19,6 +19,8 @@ if (isset($post_data["result"]["action"])) {
 	$speech = $spe["desc"];
 	$write = $spe["write"];
 }     
+	
+//Want to separate the sources.. this needs some work!! Also SDKs are better to build awesome apps.	
     if($post_data["originalRequest"]["source"]){$src = $post_data["originalRequest"]["source"];}else{$src = "agent";}
     if($src == "Google"){
 	    $parameters = array(
