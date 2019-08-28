@@ -24,23 +24,17 @@ $write = $spe["write"];
 if ($post_data["originalDetectIntentRequest"]["source"]){$src = $post_data["originalDetectIntentRequest"]["source"];} else {$src = "agent";}
 if ($src == "Google"){
 $parameters = array(
-//"source" = > $src,
-//"speech" = > "This is a demo text for google assistant", // $speak,
-//"displayText" = > "Demo for google assistant", // $speak,
-//"contextOut" = >[]
-"fulfillmentText" = > "This is a demo text for google assistant"
+"source" => $src,
+"fulfillmentText" => "This is a demo text for google assistant", // $write
+"outputContexts" =>[]
 );
 sendMessage($parameters);
 } // Google
 else {
-/*$parameters = array(
-"source" = > $src,
-"speech" = > $speech,
-"displayText" = > $write,
-"contextOut" = >[]
-);*/
 $parameters = array(
-"fulfillmentText" = > $write
+"source" => $src,
+"fulfillmentText" => $write,
+"outputContexts" =>[]
 );
 
 sendMessage($parameters);
@@ -48,4 +42,4 @@ sendMessage($parameters);
 } else {
 echo "Please let me know your sunsign";
 }
-? > 
+? >
