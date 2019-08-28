@@ -2,7 +2,7 @@
 function sendMessage($parameters)
 {
     header('Content-Type: application/json');
-// print_r($parameters);
+print_r($parameters);
 echo json_encode($parameters);
 }
 $post = file_get_contents("php://input");
