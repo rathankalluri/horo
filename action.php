@@ -2,7 +2,7 @@
 function sendMessage($parameters)
 {
     header('Content-Type: application/json');
-print_r($parameters);
+#print_r($parameters);
 echo json_encode($parameters);
 }
 $post = file_get_contents("php://input");
@@ -25,7 +25,7 @@ if ($post_data["originalDetectIntentRequest"]["source"]){$src = $post_data["orig
 if ($src == "Google"){
 $parameters = array(
 "source" => $src,
-"fulfillmentText" => "This is a demo text for google assistant", // $write
+"fulfillmentText" => "This is a demo text for google assistant", // $speech
 "outputContexts" =>[]
 );
 sendMessage($parameters);
@@ -33,7 +33,7 @@ sendMessage($parameters);
 else {
 $parameters = array(
 "source" => $src,
-"fulfillmentText" => $write,
+"fulfillmentText" => $speech,
 "outputContexts" =>[]
 );
 
