@@ -28,7 +28,7 @@ $parameters = array(
 //"speech" = > "This is a demo text for google assistant", // $speak,
 //"displayText" = > "Demo for google assistant", // $speak,
 //"contextOut" = >[]
-"fulfillmentText" = > $src
+"fulfillmentText" = > "This is a demo text for google assistant"
 );
 sendMessage($parameters);
 } // Google
@@ -40,7 +40,7 @@ else {
 "contextOut" = >[]
 );*/
 $parameters = array(
-"fulfillmentText" = > $src
+"fulfillmentText" = > $write
 );
 
 sendMessage($parameters);
