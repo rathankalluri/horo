@@ -1,4 +1,4 @@
-< ?php
+<?php
 function sendMessage($parameters)
 {
     header('Content-Type: application/json');
@@ -42,4 +42,4 @@ sendMessage($parameters);
 } else {
 echo "Please let me know your sunsign";
 }
-? >
+?>
